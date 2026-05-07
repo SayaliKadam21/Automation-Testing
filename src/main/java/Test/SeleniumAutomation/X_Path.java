@@ -1,4 +1,4 @@
-package Test.Practice_01_selenium;
+package Test.SeleniumAutomation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;

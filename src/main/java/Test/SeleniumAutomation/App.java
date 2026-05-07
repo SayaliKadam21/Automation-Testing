@@ -1,4 +1,4 @@
-package Test.Practice_01_selenium;
+package Test.SeleniumAutomation;
 
 /**
  * Hello world!
