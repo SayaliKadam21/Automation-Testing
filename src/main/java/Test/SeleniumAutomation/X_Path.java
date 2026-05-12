@@ -14,7 +14,7 @@ public class X_Path {
 		cd.findElement(By.xpath("//input[@id='firstName']")).sendKeys("Sayali");
 		
 		
-//2.by using parenttag name and chiledtag name = //parenttagname//childtagname
+//2.by using parenttag name and chiledtag name = //parenttagname/childtagname
 		//cd.findElement(By.xpath("//div/input")).sendKeys("Kadam");
 		
 //3. by using indexing = (//tagname[@attribute='value'])[index]
