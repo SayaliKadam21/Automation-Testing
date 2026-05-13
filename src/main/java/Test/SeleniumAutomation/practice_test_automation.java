@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 public class practice_test_automation {
 	public static void main(String[]args) throws InterruptedException {
 		ChromeDriver cd = new ChromeDriver();
+		cd.manage().window().maximize();
 		cd.get("https://testautomationpractice.blogspot.com/");
 		
 		//name
@@ -66,10 +67,50 @@ public class practice_test_automation {
 		cd.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		cd.findElement(By.id("multipleFilesInput")).sendKeys("D:\\Fortune cloud");
 		cd.findElement(By.xpath("//button[text()='Upload Multiple Files']")).click();
-		
+	
+//------------------------------------------------------------------------------------------------------------------
 		//Pagination Web Table
 		
+		//WebElement checkbox = cd.findElement(By.xpath("//table[@id='productTable']//tbody/tr[1]/td[4]/input"));
+		//checkbox.click();
+//		List<WebElement> checkboxes = cd.findElements(By.xpath("//table[@id='productTable']//tbody/tr/td[4]/input"));
+//		for(WebElement cb : checkboxes){
+//		    cb.click();
+//		}
 		
+		 // Get all pagination buttons (1,2,3,4)
+        List<WebElement> pages = cd.findElements(
+                By.xpath("//ul[@class='pagination']//a"));
+
+        int totalPages = pages.size();
+
+        // Loop through each page
+        for (int i = 1; i <= totalPages; i++) {
+
+            // Click page number
+            cd.findElement(
+                    By.xpath("//ul[@class='pagination']//a[text()='" + i + "']")).click();
+
+            Thread.sleep(2000);
+
+            System.out.println("Opened Page: " + i);
+
+            // Get all checkboxes from current page
+            List<WebElement> checkboxes = cd.findElements(
+                    By.xpath("//table[@id='productTable']//tbody/tr/td[4]/input"));
+
+            // Click each checkbox
+            for (WebElement checkbox : checkboxes) {
+
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+            }
+
+            System.out.println("All checkboxes clicked on Page: " + i);
+        }
+
+  //---------------------------------------------------------------------------------------------------
 		
 		
 		//Tabs
@@ -176,6 +217,27 @@ public class practice_test_automation {
 			cd.navigate().back();
 		}
 		
+		//Form
+		//cd.switchTo().frame(0);
+		cd.findElement(By.id("input1")).sendKeys("abc");
+		cd.findElement(By.id("btn1")).click();
+		
+		cd.findElement(By.id("input2")).sendKeys("def");
+		cd.findElement(By.id("btn2")).click();
+		
+		cd.findElement(By.id("input3")).sendKeys("gasnfsd");
+		cd.findElement(By.id("btn3")).click();
+		
+		
+		//ShadowDOM
+		
+		cd.findElement(By.linkText("Blog")).click();
+		cd.navigate().back();
+		
+		//cd.switchTo().frame(0);
+		//cd.findElement(By.xpath("//input[@type='text']")).sendKeys("Hello");
+		cd.switchTo().frame(2);
+		cd.findElement(By.cssSelector("//input[type='text']")).sendKeys("Hello");
 		
 		
 	}
