@@ -1,4 +1,4 @@
-package Test.Practice_01_selenium;
+package Test.SeleniumAutomation;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
